@@ -17,7 +17,7 @@ for interface in $(ip link show | awk '/^[0-9]*:/ {print $2}' | sed -e 's/:$//' 
 done
 
 cat <<EOT > /etc/torrc
-VirtualAddrNetworkIPv4 172.16.0.0/12
+VirtualAddrNetworkIPv4 10.192.0.0/10
 AutomapHostsOnResolve 1
 TransPort 0.0.0.0:9040 IsolateClientAddr IsolateClientProtocol IsolateDestAddr IsolateDestPort
 DNSPort 0.0.0.0:5353
