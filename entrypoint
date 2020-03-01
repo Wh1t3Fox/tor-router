@@ -27,6 +27,7 @@ EOT
 chown tor:tor /etc/torrc
 
 iptables-restore /tmp/iptables.rules
+ip6tables-restore /tmp/ip6tables.rules
 
 echo "nameserver 127.0.0.1" > /etc/resolv.conf
 

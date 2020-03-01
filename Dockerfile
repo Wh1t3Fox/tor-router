@@ -38,6 +38,7 @@ RUN ./autogen.sh && \
 
 COPY ./entrypoint /
 COPY ./iptables.rules /tmp/iptables.rules
+COPY ./ip6tables.rules /tmp/ip6tables.rules
 ENTRYPOINT ["/bin/bash", "/entrypoint"]
 
 EXPOSE 9001 9040 9050 5353/udp
