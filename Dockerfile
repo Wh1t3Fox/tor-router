@@ -100,13 +100,13 @@ RUN apt-get update && \
     iproute2 && \
  useradd -m -u 9001 -s /bin/bash tor
 
+WORKDIR /home/tor
 
-COPY --from=builder /usr/src/tor/install/bin/tor /usr/local/bin/tor
+COPY --from=builder /usr/src/tor/install/bin/tor .
+COPY --chown=tor:tor ./torrc .
 COPY ./entrypoint /
 COPY ./iptables.rules /tmp/iptables.rules
 COPY ./ip6tables.rules /tmp/ip6tables.rules
 ENTRYPOINT ["/bin/bash", "/entrypoint"]
 
-EXPOSE 9040 5353/udp
-
-CMD ["/usr/local/bin/tor -f /etc/torrc"]
+CMD ["./tor -f ./torrc"]

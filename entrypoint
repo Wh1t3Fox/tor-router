@@ -16,18 +16,7 @@ for interface in $(ip link show | awk '/^[0-9]*:/ {print $2}' | sed -e 's/:$//' 
   fi
 done
 
-cat <<EOT > /etc/torrc
-VirtualAddrNetworkIPv4 10.192.0.0/10
-AutomapHostsOnResolve 1
-TransPort 0.0.0.0:9040 IsolateClientAddr IsolateClientProtocol IsolateDestAddr IsolateDestPort
-DNSPort 0.0.0.0:5353
-SocksPort 0.0.0.0:9050
-EOT
-
-chown tor:tor /etc/torrc
-
-iptables-restore /tmp/iptables.rules
-ip6tables-restore /tmp/ip6tables.rules
+iptables-restore < /tmp/iptables.rules
 
 echo "nameserver 127.0.0.1" > /etc/resolv.conf
 
