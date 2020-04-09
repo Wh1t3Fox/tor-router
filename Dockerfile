@@ -2,9 +2,9 @@ FROM ubuntu:bionic as builder
 
 ARG TOR_VER=0.4.2.7
 ARG LIBEVENT_VER=2.1.11
-ARG OPENSSL_VER=1.1.1d
+ARG OPENSSL_VER=1.1.1f
 ARG ZLIB_VER=1.2.11
-ARG XZ_VER=5.2.4
+ARG XZ_VER=5.2.5
 
 ENV DEBIAN_FRONTEND=noninteractive
 
@@ -23,6 +23,7 @@ RUN apt-get update && \
 	libseccomp-dev \
     libtool \
     libssl-dev \
+    po4a \
 	xmlto && \
  mkdir -p /usr/src/
 
