@@ -107,6 +107,7 @@ COPY --from=builder /usr/src/tor/install/bin/tor .
 COPY --chown=tor:tor ./torrc .
 COPY ./entrypoint /
 COPY ./iptables.rules /tmp/iptables.rules
+COPY ./ip6tables.rules /tmp/ip6tables.rules
 ENTRYPOINT ["/bin/bash", "/entrypoint"]
 
 CMD ["./tor -f ./torrc"]

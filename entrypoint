@@ -17,6 +17,7 @@ for interface in $(ip link show | awk '/^[0-9]*:/ {print $2}' | sed -e 's/:$//' 
 done
 
 iptables-restore < /tmp/iptables.rules
+ip6tables-restore < /tmp/ip6tables.rules
 
 echo "nameserver 127.0.0.1" > /etc/resolv.conf
 
